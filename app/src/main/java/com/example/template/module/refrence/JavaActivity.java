@@ -21,6 +21,11 @@ public class JavaActivity extends BaseActivity {
     private Context mContext;
 
     @Override
+    protected int getLayout() {
+        return 0;
+    }
+
+    @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         mContext=this;

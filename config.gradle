@@ -16,7 +16,12 @@ ext {
             "recyclerview"                 : "com.android.support:recyclerview-v7:${version["supportLibraryVersion"]}",
 
             //RecyclerView适配器 3.x是基于AndroidX 官方使用指南：https://www.jianshu.com/p/b343fcff51b0
-            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50"
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50",
+
+            //Android系统View注入框架
+            "butterknife"                  : "com.jakewharton:butterknife:10.2.1",
+            "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:10.2.1",
+//            "butterKnife-gradle-plugin"    : "com.jakewharton:butterknife-gradle-plugin:8.5.1"
 
     ]
 
