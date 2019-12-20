@@ -9,8 +9,11 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+import com.example.common.util.UIUtil;
+import com.example.template.app.BaseActivity;
+import com.example.template.module.recycleview.RecycleViewTestActivity;
 
+public class MainActivity extends BaseActivity {
 
     private Context mContext;
 
@@ -33,7 +36,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.one:
-                Toast.makeText(mContext, "one", Toast.LENGTH_SHORT).show();
+                UIUtil.showActivity(mActivity, RecycleViewTestActivity.class);
                 break;
             case R.id.two:
                 Toast.makeText(mContext, "two", Toast.LENGTH_SHORT).show();

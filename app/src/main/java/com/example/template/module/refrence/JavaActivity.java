@@ -8,15 +8,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.template.R;
+import com.example.template.app.BaseActivity;
 
 /**
  * 功能描述：
  * Created by gfq on 2019/12/20.
  */
-public class JavaActivity extends AppCompatActivity {
+public class JavaActivity extends BaseActivity {
 
     private Context mContext;
 

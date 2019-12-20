@@ -1,0 +1,24 @@
+ext {
+
+    android = [
+            compileSdkVersion: 29,
+            buildToolsVersion: "29.0.2",
+            minSdkVersion    : 15,
+            targetSdkVersion : 29,
+    ]
+
+    version = [
+            supportLibraryVersion: "29.0.0",
+    ]
+
+    dependencies = [
+
+            "recyclerview"                 : "com.android.support:recyclerview-v7:${version["supportLibraryVersion"]}",
+
+            //RecyclerView适配器 3.x是基于AndroidX 官方使用指南：https://www.jianshu.com/p/b343fcff51b0
+            "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50"
+
+    ]
+
+
+}
