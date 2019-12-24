@@ -24,4 +24,7 @@ public class PersonAdapter extends BaseQuickAdapter<PersonBean, BaseViewHolder> 
     protected void convert(@NonNull BaseViewHolder helper, PersonBean item) {
         helper.setText(R.id.tv_name, item.getName());
     }
+
+
+
 }

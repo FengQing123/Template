@@ -60,7 +60,7 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.VH> {
     }
 
 
-    static class VH extends RecyclerView.ViewHolder {
+    public static class VH extends RecyclerView.ViewHolder {
 
         private final TextView mTextName;
 

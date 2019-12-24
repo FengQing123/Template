@@ -23,6 +23,10 @@ ext {
             "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:10.2.1",
 //            "butterKnife-gradle-plugin"    : "com.jakewharton:butterknife-gradle-plugin:8.5.1"
 
+
+            //RecycleView动画
+            "recyclerview-animators"       : "com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar"
+
     ]
 
 
