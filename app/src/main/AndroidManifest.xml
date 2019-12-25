@@ -18,6 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.recycleview.RecycleViewTestActivity" />
+        <activity android:name=".module.recycleview.RvToViewPagerActivity"/>
     </application>
 
 </manifest>

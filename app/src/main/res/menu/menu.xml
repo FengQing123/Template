@@ -6,7 +6,7 @@
 
     <item
         android:id="@+id/two"
-        android:title="two" />
+        android:title="RecycleView实现轮播图" />
 
     <item
         android:id="@+id/three"

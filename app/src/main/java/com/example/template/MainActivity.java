@@ -12,6 +12,7 @@ import android.widget.Toast;
 import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
+import com.example.template.module.recycleview.RvToViewPagerActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -43,7 +44,7 @@ public class MainActivity extends BaseActivity {
                 UIUtil.showActivity(mActivity, RecycleViewTestActivity.class);
                 break;
             case R.id.two:
-                Toast.makeText(mContext, "two", Toast.LENGTH_SHORT).show();
+                UIUtil.showActivity(mActivity, RvToViewPagerActivity.class);
                 break;
             case R.id.three:
                 Toast.makeText(mContext, "three", Toast.LENGTH_SHORT).show();

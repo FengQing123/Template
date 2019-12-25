@@ -39,13 +39,13 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.VH> {
          * 这里需要注意：不能使用：
          * LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview,null);
          */
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pager, parent, false);
         return new VH(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull VH holder, int position) {
-        holder.mTextName.setText("XIAOMING");
+        holder.mTextName.setText(mDatas.get(position));
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
