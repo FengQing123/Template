@@ -5,13 +5,21 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.example.template.view.recycleview.EmptyRecycleView
-        android:id="@+id/recycleview"
+
+    <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/ll_bottom"
-        app:layout_constraintTop_toTopOf="parent"
-        tools:listitem="@layout/item_recycleview" />
+        app:layout_constraintTop_toTopOf="parent">
+
+        <com.example.template.view.recycleview.EmptyRecycleView
+            android:id="@+id/recycleview"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            tools:listitem="@layout/item_recycleview" />
+
+    </com.scwang.smartrefresh.layout.SmartRefreshLayout>
+
 
     <LinearLayout
         android:id="@+id/ll_bottom"

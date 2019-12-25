@@ -36,4 +36,6 @@ dependencies {
 
     api rootProject.ext.dependencies["recyclerview-animators"]
 
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+
 }

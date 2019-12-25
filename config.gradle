@@ -23,9 +23,14 @@ ext {
             "butterknife-compiler"         : "com.jakewharton:butterknife-compiler:10.2.1",
 //            "butterKnife-gradle-plugin"    : "com.jakewharton:butterknife-gradle-plugin:8.5.1"
 
-
             //RecycleView动画
-            "recyclerview-animators"       : "com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar"
+            "recyclerview-animators"       : "com.github.gabrielemariotti.recyclerview:recyclerview-animators:0.3.0-SNAPSHOT@aar",
+
+            //下拉上拉刷新控件
+            "SmartRefreshLayout"           : "com.scwang.smartrefresh:SmartRefreshLayout:1.1.0",
+            //特殊Header和Footer，没有使用可以不加这行
+            "SmartRefreshHeader"           : "com.scwang.smartrefresh:SmartRefreshHeader:1.1.0",
+            "SmartRefreshFooter"           : "com.scwang.smartrefresh:SmartRefreshFooter:1.1.0"
 
     ]
 
