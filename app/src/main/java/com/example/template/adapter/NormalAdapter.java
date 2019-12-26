@@ -3,11 +3,15 @@ package com.example.template.adapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.widget.LinearLayoutCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.common.app.BaseApp;
+import com.example.common.util.ScreenInfoUtil;
 import com.example.template.R;
 
 import java.util.List;
@@ -40,6 +44,11 @@ public class NormalAdapter extends RecyclerView.Adapter<NormalAdapter.VH> {
          * LayoutInflater.from(parent.getContext()).inflate(R.layout.item_recycleview,null);
          */
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_pager, parent, false);
+        int width = (int) (ScreenInfoUtil.getScreenWidth(parent.getContext()) * 0.9);
+        int height = LinearLayoutCompat.LayoutParams.WRAP_CONTENT;
+
+        //这里把View（即RecycleView的item）的宽度设置为屏幕的90%
+        view.setLayoutParams(new LinearLayout.LayoutParams(width, height));
         return new VH(view);
     }
 
