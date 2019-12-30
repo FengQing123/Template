@@ -38,4 +38,7 @@ dependencies {
 
     api rootProject.ext.dependencies["SmartRefreshLayout"]
 
+    api rootProject.ext.dependencies["glide"]
+    annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
 }
