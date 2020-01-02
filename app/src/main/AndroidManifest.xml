@@ -20,6 +20,7 @@
         <activity android:name=".module.recycleview.RecycleViewTestActivity" />
         <activity android:name=".module.recycleview.RvToViewPagerActivity" />
         <activity android:name=".module.notification.NotificationActivity" />
+        <activity android:name=".module.DefineTextViewActivity"/>
 
 
         <!--消息通知监听服务-->

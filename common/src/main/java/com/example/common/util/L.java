@@ -10,17 +10,23 @@ public class L {
     public static final String TAG = "LOG";
     private static final Boolean isOpen = true;
 
-    /**
-     * 普通版
-     *
-     * @param msg
-     */
     public static void d(String msg) {
+        L.d(TAG, msg);
+    }
+
+    public static void d(String TAG, String msg) {
         if (isOpen) {
-            //打开日志
             Log.d(TAG, msg);
-        } else {
-            //关闭日志
+        }
+    }
+
+    public static void e(String msg) {
+        L.e(TAG, msg);
+    }
+
+    public static void e(String TAG, String msg) {
+        if (isOpen) {
+            Log.e(TAG, msg);
         }
     }
 
@@ -31,6 +37,11 @@ public class L {
      */
     public static void d(Object msg) {
         String string = msg.toString();
-        Log.d(TAG, string);
+        L.d(TAG, string);
+    }
+
+    public static void e(Object msg) {
+        String string = msg.toString();
+        L.e(TAG, string);
     }
 }

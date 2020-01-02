@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical">
+
+    <com.example.template.view.BorderTextView
+        android:id="@+id/tv_up"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:gravity="center"
+        android:text="上"
+        android:textColor="@color/white"
+        app:contentBackColor="@color/bg_color1"
+        app:contentPressedColor="@color/green"
+        app:cornerRadius="150dp"
+        app:strokeColor="@color/black"
+        app:strokeWidth="5dp" />
+
+    <com.example.template.view.BorderTextView
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:gravity="center"
+        android:text="下"
+        android:textColor="@color/white"
+        app:contentBackColor="@color/bg_color2"
+        app:cornerRadius="50dp" />
+
+</LinearLayout>

@@ -10,4 +10,15 @@
         <item name="android:listDivider">@drawable/divider_bg</item>
     </style>
 
+    <!-- 有边框和背景的View -->
+    <declare-styleable name="BorderTextView">
+        <attr name="contentBackColor" format="color" />
+        <attr name="cornerRadius" format="dimension" />
+        <attr name="strokeColor" format="color" />
+        <attr name="strokeWidth" format="dimension" />
+        <attr name="contentPressedColor" format="color" />
+        <attr name="disableBackColor" format="color" />
+        <attr name="followTextColor" format="boolean" />
+    </declare-styleable>
+
 </resources>

@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
+import com.example.template.module.DefineTextViewActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
@@ -51,7 +52,7 @@ public class MainActivity extends BaseActivity {
                 UIUtil.showActivity(mActivity, NotificationActivity.class);
                 break;
             case R.id.four:
-                Toast.makeText(mContext, "four", Toast.LENGTH_SHORT).show();
+                UIUtil.showActivity(mActivity, DefineTextViewActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);

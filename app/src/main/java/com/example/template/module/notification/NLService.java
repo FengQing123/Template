@@ -4,9 +4,10 @@ import android.content.Intent;
 import android.os.Build;
 import android.service.notification.NotificationListenerService;
 import android.service.notification.StatusBarNotification;
-import android.util.Log;
 
 import androidx.annotation.RequiresApi;
+
+import com.example.common.util.L;
 
 /**
  * 功能描述：监听通知内容（需要通知使用权）
@@ -20,25 +21,25 @@ public class NLService extends NotificationListenerService {
     @Override
     public void onCreate() {
         super.onCreate();
-        Log.e(TAG, "-----onCreate--------");
+        L.e(TAG, "-----onCreate--------");
     }
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Log.e(TAG, "-----onStartCommand--------");
+        L.e(TAG, "-----onStartCommand--------");
         return super.onStartCommand(intent, flags, startId);
     }
 
     @Override
     public void onNotificationPosted(StatusBarNotification sbn) {
         super.onNotificationPosted(sbn);
-        Log.e(TAG, "-----onNotificationPosted--------" + sbn.getPackageName());
+        L.e(TAG, "-----onNotificationPosted--------" + sbn.getPackageName());
     }
 
     @Override
     public void onNotificationRemoved(StatusBarNotification sbn) {
         super.onNotificationRemoved(sbn);
-        Log.e(TAG, "-----onNotificationRemoved--------" + sbn.getPackageName());
+        L.e(TAG, "-----onNotificationRemoved--------" + sbn.getPackageName());
     }
 
 }

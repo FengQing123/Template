@@ -14,7 +14,7 @@
 
     <item
         android:id="@+id/four"
-        android:title="four" />
+        android:title="自定义TextView" />
 
     <item
         android:id="@+id/five"
