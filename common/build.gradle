@@ -32,13 +32,34 @@ dependencies {
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
     api rootProject.ext.dependencies["recyclerview"]
+    api rootProject.ext.dependencies["design"]
     api rootProject.ext.dependencies["BaseRecyclerViewAdapterHelper"]
 
-    api rootProject.ext.dependencies["recyclerview-animators"]
+//    api rootProject.ext.dependencies["recyclerview-animators"]
 
     api rootProject.ext.dependencies["SmartRefreshLayout"]
 
     api rootProject.ext.dependencies["glide"]
     annotationProcessor rootProject.ext.dependencies["glide-compiler"]
+
+    //canary
+    debugApi(rootProject.ext.dependencies["leakcanary-android"]) {
+        exclude group: 'com.android.support'
+    }
+    releaseApi(rootProject.ext.dependencies["leakcanary-android-no-op"]) {
+        exclude group: 'com.android.support'
+    }
+    testApi(rootProject.ext.dependencies["leakcanary-android-no-op"]) {
+        exclude group: 'com.android.support'
+    }
+
+    api rootProject.ext.dependencies["logger"]
+
+    api rootProject.ext.dependencies["rxjava"]
+    api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["rxbinding"]
+
+    api rootProject.ext.dependencies["retrofit"]
+
 
 }

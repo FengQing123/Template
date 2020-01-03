@@ -37,3 +37,6 @@ app 和 appkotlin都去引用它，这样app就不会显示过多的依赖，显
 
 #AndroidStudio 3.0以上后，添加依赖推荐使用api和implementation和替代compile
 Common库里使用api , app 和 appkotlin 这些依赖于Common库的Module才会检测到，如果Common库里使用implementation, 只能Common库里使用
+
+MVP学习：
+https://blog.mindorks.com/essential-guide-for-designing-your-android-app-architecture-mvp-part-1-74efaf1cda40
