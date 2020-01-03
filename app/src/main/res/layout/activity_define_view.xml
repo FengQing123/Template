@@ -28,4 +28,17 @@
         app:contentBackColor="@color/bg_color2"
         app:cornerRadius="50dp" />
 
+    <com.example.template.view.BorderTextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="15dp"
+        android:paddingTop="2dp"
+        android:paddingRight="15dp"
+        android:paddingBottom="2dp"
+        android:text="正常"
+        android:textColor="@color/white"
+        android:textSize="14sp"
+        app:contentBackColor="@color/bg_color2"
+        app:cornerRadius="15dp" />
+
 </LinearLayout>
