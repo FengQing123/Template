@@ -1,8 +1,9 @@
 package com.example.mvp.core.bean.project;
 
+import com.example.mvp.core.bean.main.collect.FeedArticleData;
+
 import java.util.List;
 
-import json.chao.com.wanandroid.core.bean.main.collect.FeedArticleData;
 
 /**
  * @author quchao
