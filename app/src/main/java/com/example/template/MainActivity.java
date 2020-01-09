@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
+import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineTextViewActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
@@ -53,6 +54,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.four:
                 UIUtil.showActivity(mActivity, DefineTextViewActivity.class);
+                break;
+            case R.id.five:
+                UIUtil.showActivity(mActivity, CalendarActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);

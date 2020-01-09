@@ -15,6 +15,7 @@ import com.example.template.R;
 import com.example.template.adapter.PersonAnimatorAdapter;
 import com.example.template.app.BaseActivity;
 import com.example.template.bean.PersonBean;
+import com.example.template.dialog.LevelBottomDialog;
 import com.example.template.dialog.LevelDialog;
 import com.example.template.view.recycleview.DividerItemDecoration;
 import com.example.template.view.recycleview.EmptyRecycleView;
@@ -167,7 +168,7 @@ public class RecycleViewTestActivity extends BaseActivity {
                 LevelDialog.newInstance().show(getSupportFragmentManager(), "levelDialog");
                 break;
             case R.id.btn_BottomDialog:
-
+                LevelBottomDialog.newInstance().show(getSupportFragmentManager(), "LevelBottomDialog");
                 break;
         }
     }
