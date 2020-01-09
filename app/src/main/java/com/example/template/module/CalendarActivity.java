@@ -4,6 +4,7 @@ import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.common.util.DateUtil;
@@ -12,6 +13,8 @@ import com.example.template.R;
 import com.example.template.adapter.CalendarAdapter;
 import com.example.template.app.BaseActivity;
 import com.example.template.bean.DateCalendarBean;
+import com.example.template.view.recycleview.LoopPagerSnapHelper;
+import com.example.template.view.recycleview.LooperLayoutManager;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -49,12 +52,17 @@ public class CalendarActivity extends BaseActivity {
         }
         bean.setMillisArray(array);
         bean.setDayNumArray(dayNum);
+
+        list.add(bean);
+        list.add(bean);
         list.add(bean);
 
         RecyclerView mRecycleCalendar = findViewById(R.id.recycle_calendar);
         CalendarAdapter adapter = new CalendarAdapter(list);
-        mRecycleCalendar.setLayoutManager(new LinearLayoutManager(mRecycleCalendar.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        mRecycleCalendar.setLayoutManager(new LooperLayoutManager());
         mRecycleCalendar.setAdapter(adapter);
+
+//        new LoopPagerSnapHelper().attachToRecyclerView(mRecycleCalendar);
 
 
     }
