@@ -13,8 +13,11 @@ import com.example.template.R;
 import com.example.template.adapter.CalendarAdapter;
 import com.example.template.app.BaseActivity;
 import com.example.template.bean.DateCalendarBean;
-import com.example.template.view.recycleview.LoopPagerSnapHelper;
-import com.example.template.view.recycleview.LooperLayoutManager;
+import com.necer.calendar.BaseCalendar;
+import com.necer.calendar.WeekCalendar;
+import com.necer.listener.OnCalendarChangedListener;
+
+import org.joda.time.LocalDate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -59,10 +62,19 @@ public class CalendarActivity extends BaseActivity {
 
         RecyclerView mRecycleCalendar = findViewById(R.id.recycle_calendar);
         CalendarAdapter adapter = new CalendarAdapter(list);
-        mRecycleCalendar.setLayoutManager(new LooperLayoutManager());
+        mRecycleCalendar.setLayoutManager(new LinearLayoutManager(mRecycleCalendar.getContext(), LinearLayoutManager.HORIZONTAL, false));
         mRecycleCalendar.setAdapter(adapter);
+        mRecycleCalendar.scrollToPosition(adapter.getItemCount() * 1000);
+        new PagerSnapHelper().attachToRecyclerView(mRecycleCalendar);
 
-//        new LoopPagerSnapHelper().attachToRecyclerView(mRecycleCalendar);
+
+        WeekCalendar mWeekCalendar = findViewById(R.id.week_calendar);
+        mWeekCalendar.setOnCalendarChangedListener(new OnCalendarChangedListener() {
+            @Override
+            public void onCalendarChange(BaseCalendar baseCalendar, int year, int month, LocalDate localDate) {
+                L.e("year=" + year + ",month=" + month + ",localDate=" + localDate);
+            }
+        });
 
 
     }

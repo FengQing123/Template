@@ -1,7 +1,9 @@
-package com.example.template.view.recycleview;
+package com.example.template.view.recycleview.Looper_one;
 
 import androidx.recyclerview.widget.PagerSnapHelper;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.example.template.view.recycleview.Looper_one.LooperLayoutManager;
 
 /**
  * 功能描述：配合 {@link LooperLayoutManager} 解决一次滑动多页的问题（问题好像也没有解决）

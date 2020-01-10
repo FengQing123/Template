@@ -55,6 +55,9 @@ ext {
             //网络请求框架 github地址：https://github.com/square/retrofit 文档地址：https://square.github.io/retrofit/
             "retrofit"                     : "com.squareup.retrofit2:retrofit:2.5.0",
 
+            //日历4.4.1支持androidx,4.3.8没有：https://github.com/yannecer/NCalendar
+            "ncalendar"                    : "com.necer.ncalendar:ncalendar:4.4.1"
+
     ]
 
 

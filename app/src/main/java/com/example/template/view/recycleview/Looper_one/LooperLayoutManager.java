@@ -1,4 +1,4 @@
-package com.example.template.view.recycleview;
+package com.example.template.view.recycleview.Looper_one;
 
 import android.util.Log;
 import android.view.View;
@@ -8,6 +8,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 /**
  * 功能描述：自定义LayoutManager ,实现RecycleView无限循环
+ * <pre>
+ *     mRecycleView.setLayoutManager(new LooperLayoutManager());
+ * </pre>
  * 参考：https://juejin.im/post/5cfa198ff265da1b8c197c2f
  * Created by gfq on 2020/1/9
  **/

@@ -66,5 +66,8 @@ dependencies {
 
     api rootProject.ext.dependencies["retrofit"]
 
+    //日历
+    api rootProject.ext.dependencies["ncalendar"]
+
 
 }
