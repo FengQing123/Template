@@ -69,5 +69,8 @@ dependencies {
     //日历
     api rootProject.ext.dependencies["ncalendar"]
 
+    //表格（RecycleView实现）
+    api rootProject.ext.dependencies["orient"]
+
 
 }
