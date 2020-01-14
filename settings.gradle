@@ -1,2 +1,2 @@
-include ':app', ':appkotlin', ':common', ':mvp'
+include ':app', ':appkotlin', ':common', ':mvp', ':mvp2'
 rootProject.name='Template'
