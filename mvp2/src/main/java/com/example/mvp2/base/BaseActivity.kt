@@ -7,6 +7,6 @@ import com.example.mvp2.base.mvp.MvpActivity
  * Created by gfq on 2020/1/14.
  */
 
-abstract class BaseActivity<P : BasePresenter<*>> : MvpActivity<P>() {
+abstract class BaseActivity<V : BaseView, P : BasePresenter<V>> : MvpActivity<V, P>() {
 
 }
