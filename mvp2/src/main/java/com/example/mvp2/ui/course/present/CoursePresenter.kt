@@ -1,8 +1,8 @@
-package com.example.mvp2.course.present
+package com.example.mvp2.ui.course.present
 
 import com.example.mvp2.base.BasePresenter
-import com.example.mvp2.course.module.CourseBean
-import com.example.mvp2.course.view.CourseView
+import com.example.mvp2.ui.course.module.CourseBean
+import com.example.mvp2.ui.course.view.CourseView
 
 
 /**

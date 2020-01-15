@@ -1,4 +1,4 @@
-package com.example.mvp2.TestGeneric
+package com.example.mvp2.ui.TestGeneric
 
 
 /**

@@ -3,7 +3,8 @@ package com.example.mvp2
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.example.mvp2.course.activity.CourseActivity
+import com.example.mvp2.ui.course.activity.CourseActivity
+import com.example.mvp2.ui.login.LoginActivity
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity(), MainContract.View {
@@ -16,6 +17,12 @@ class MainActivity : AppCompatActivity(), MainContract.View {
 
         btn_to_course.setOnClickListener {
             startActivity(Intent(this, CourseActivity::class.java))
+        }
+
+        btn_to_login.setOnClickListener {
+            Intent(this, LoginActivity::class.java).run {
+                startActivity(this)
+            }
         }
 
         btn_get_data.setOnClickListener {

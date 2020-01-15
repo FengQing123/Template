@@ -1,13 +1,11 @@
-package com.example.mvp2.TestGeneric;
+package com.example.mvp2.ui.TestGeneric;
 
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
-import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 /**
  * 功能描述：

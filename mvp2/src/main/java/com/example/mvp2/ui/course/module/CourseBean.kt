@@ -1,4 +1,4 @@
-package com.example.mvp2.course.module
+package com.example.mvp2.ui.course.module
 
 
 /**

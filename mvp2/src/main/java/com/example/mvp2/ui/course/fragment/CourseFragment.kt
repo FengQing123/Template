@@ -1,11 +1,11 @@
-package com.example.mvp2.course.fragment
+package com.example.mvp2.ui.course.fragment
 
 import android.view.View
 import com.example.mvp2.R
 import com.example.mvp2.base.BaseFragment
-import com.example.mvp2.course.module.CourseBean
-import com.example.mvp2.course.present.CoursePresenter
-import com.example.mvp2.course.view.CourseView
+import com.example.mvp2.ui.course.module.CourseBean
+import com.example.mvp2.ui.course.present.CoursePresenter
+import com.example.mvp2.ui.course.view.CourseView
 import kotlinx.android.synthetic.main.fragment_course.*
 import kotlinx.android.synthetic.main.fragment_course.view.*
 

@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".course.activity.CourseActivity" />
+        <activity android:name="com.example.mvp2.ui.login.LoginActivity" />
+        <activity android:name="com.example.mvp2.ui.course.activity.CourseActivity" />
     </application>
 
 </manifest>

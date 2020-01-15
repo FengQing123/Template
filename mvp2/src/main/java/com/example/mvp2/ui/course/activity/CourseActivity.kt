@@ -1,12 +1,10 @@
-package com.example.mvp2.course.activity
+package com.example.mvp2.ui.course.activity
 
-import androidx.fragment.app.FragmentTransaction
 import com.example.mvp2.R
 import com.example.mvp2.base.BaseActivity
-import com.example.mvp2.course.fragment.CourseFragment
-import com.example.mvp2.course.module.CourseBean
-import com.example.mvp2.course.present.CoursePresenter
-import com.example.mvp2.course.view.CourseView
+import com.example.mvp2.ui.course.module.CourseBean
+import com.example.mvp2.ui.course.present.CoursePresenter
+import com.example.mvp2.ui.course.view.CourseView
 import kotlinx.android.synthetic.main.activity_main.*
 
 
