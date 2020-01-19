@@ -9,6 +9,7 @@ android {
         targetSdkVersion rootProject.ext.android["targetSdkVersion"]
         versionCode 1
         versionName "1.0"
+        multiDexEnabled true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
@@ -62,15 +63,19 @@ dependencies {
 
     api rootProject.ext.dependencies["rxjava"]
     api rootProject.ext.dependencies["rxandroid"]
+    api rootProject.ext.dependencies["adapter-rxjava"]
     api rootProject.ext.dependencies["rxbinding"]
 
     api rootProject.ext.dependencies["retrofit"]
+    api rootProject.ext.dependencies["converter-gson"]
 
     //日历
     api rootProject.ext.dependencies["ncalendar"]
 
+    api rootProject.ext.dependencies["multidex"]
+
     //表格（RecycleView实现）
-    api rootProject.ext.dependencies["orient"]
+//    api rootProject.ext.dependencies["orient"]
 
 
 }

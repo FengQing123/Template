@@ -16,7 +16,7 @@ ext {
             "recyclerview"                 : "com.android.support:recyclerview-v7:${version["supportLibraryVersion"]}",
             "design"                       : "com.android.support:design:${version["supportLibraryVersion"]}",
 
-            //RecyclerView适配器 3.x是基于AndroidX 官方使用指南：https://www.jianshu.com/p/b343fcff51b0
+            //RecyclerView适配器 3.x是基于AndroidX 官方使用指南：https://www.jianshu.com/p/b343fcff51b0 或者 https://www.jianshu.com/p/1e20f301272e
             "BaseRecyclerViewAdapterHelper": "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.50",
 
             //Android系统View注入框架
@@ -50,16 +50,21 @@ ext {
             //rx异步
             "rxjava"                       : "io.reactivex.rxjava2:rxjava:2.2.4",
             "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:2.1.0",
+            "adapter-rxjava"               : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
+
             "rxbinding"                    : "com.jakewharton.rxbinding2:rxbinding:2.1.0",
 
             //网络请求框架 github地址：https://github.com/square/retrofit 文档地址：https://square.github.io/retrofit/
             "retrofit"                     : "com.squareup.retrofit2:retrofit:2.5.0",
+            "converter-gson"               : "com.squareup.retrofit2:converter-gson:2.3.0",
 
             //日历4.4.1支持androidx,4.3.8没有：https://github.com/yannecer/NCalendar
             "ncalendar"                    : "com.necer.ncalendar:ncalendar:4.4.1",
 
             //使用RecycleView实现不同的布局，例如表格（学习使用RecycleView） https://github.com/mCyp/Orient-Ui
-            "orient":"com.orient:Orient-Ui:1.0.2"
+            "orient"                       : "com.orient:Orient-Ui:1.0.2",
+
+            "multidex"                     : 'androidx.multidex:multidex:2.0.1',
 
     ]
 
