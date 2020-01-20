@@ -13,6 +13,7 @@ import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
 import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineTextViewActivity;
+import com.example.template.module.RxJavaActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
@@ -57,6 +58,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.five:
                 UIUtil.showActivity(mActivity, CalendarActivity.class);
+                break;
+            case R.id.six:
+                UIUtil.showActivity(mActivity, RxJavaActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);

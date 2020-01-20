@@ -22,6 +22,7 @@
         <activity android:name=".module.notification.NotificationActivity" />
         <activity android:name=".module.DefineTextViewActivity"/>
         <activity android:name=".module.CalendarActivity"/>
+        <activity android:name=".module.RxJavaActivity"/>
 
 
         <!--消息通知监听服务-->

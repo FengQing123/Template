@@ -22,7 +22,7 @@
 
     <item
         android:id="@+id/six"
-        android:title="six" />
+        android:title="RxJava学习" />
     <item
         android:id="@+id/seven"
         android:title="seven" />
