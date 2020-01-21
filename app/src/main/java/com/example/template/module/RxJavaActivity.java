@@ -9,10 +9,17 @@ import com.example.common.util.L;
 import com.example.template.R;
 import com.example.template.app.BaseActivity;
 
+import org.reactivestreams.Subscriber;
+import org.reactivestreams.Subscription;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
+import io.reactivex.BackpressureStrategy;
+import io.reactivex.Flowable;
+import io.reactivex.FlowableEmitter;
+import io.reactivex.FlowableOnSubscribe;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
@@ -20,8 +27,10 @@ import io.reactivex.ObservableSource;
 import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.BiFunction;
 import io.reactivex.functions.Consumer;
 import io.reactivex.functions.Function;
+import io.reactivex.functions.Predicate;
 import io.reactivex.schedulers.Schedulers;
 
 /**
@@ -44,8 +53,174 @@ public class RxJavaActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        doSubscribeRegisterLogin();
+        doSubscribeFlowable();
 
+
+    }
+
+    /**
+     * 使用 上游Flowable 和  下游Subscriber 来建立连接
+     * <p>
+     * 还要注意：
+     * BackpressureStrategy.ERROR
+     * Subscription
+     */
+    private void doSubscribeFlowable() {
+        Flowable.create(new FlowableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(FlowableEmitter<Integer> emitter) throws Exception {
+//                Log.e(TAG, "1");
+//                emitter.onNext(1);
+//                Log.e(TAG, "2");
+//                emitter.onNext(2);
+//                Log.e(TAG, "3");
+//                emitter.onNext(3);
+//                Log.e(TAG, "4");
+//                emitter.onNext(4);
+//                Log.e(TAG, "emit onComplete");
+//                emitter.onComplete();
+
+                Log.e(TAG, "thread1=" + Thread.currentThread().getName());
+
+                for (int i = 0; i < 128; i++) {
+                    emitter.onNext(i);
+                    Log.e(TAG, "i=" + i);
+                }
+            }
+        }, BackpressureStrategy.ERROR)
+                .subscribeOn(AndroidSchedulers.mainThread())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Integer>() {
+
+                    @Override
+                    public void onSubscribe(Subscription s) {
+                        Log.e(TAG, "onSubscribe");
+                        Log.e(TAG, "thread2=" + Thread.currentThread().getName());
+
+//                        s.request(Integer.MAX_VALUE);
+                    }
+
+                    @Override
+                    public void onNext(Integer integer) {
+                        Log.e(TAG, "onNext=" + integer);
+                    }
+
+                    @Override
+                    public void onError(Throwable t) {
+                        Log.e(TAG, "onError=" + t);
+                    }
+
+                    @Override
+                    public void onComplete() {
+                        Log.e(TAG, "onComplete");
+                    }
+                });
+    }
+
+    /**
+     * RxJava 操作符 sample():每隔指定的时间就从上游中取出一个事件发送给下游
+     */
+    private void doSubscribeSample() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                for (int i = 0; ; i++) {  //无限循环发送事件
+                    emitter.onNext(i);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .sample(2, TimeUnit.SECONDS)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.d(TAG, "" + integer);
+                    }
+                });
+    }
+
+    /**
+     * RxJava 操作符 filter():过滤数据
+     */
+    private void doSubscribeFilter() {
+        Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                for (int i = 0; ; i++) {  //无限循环发送事件
+                    emitter.onNext(i);
+                }
+            }
+        }).subscribeOn(Schedulers.io())
+                .filter(new Predicate<Integer>() {
+                    @Override
+                    public boolean test(Integer integer) throws Exception {
+                        return integer % 10 == 0;
+                    }
+                }).observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Consumer<Integer>() {
+                    @Override
+                    public void accept(Integer integer) throws Exception {
+                        Log.d(TAG, "" + integer);
+                    }
+                });
+    }
+
+    /**
+     * RxJava 操作符 zip():把多个Observable发送的事件组合到一起，接着按顺序发射
+     * 需要注意的是最终发射的数据是和最少的那个Observable数据一样多
+     * <p>
+     * 用法：
+     * 可能某个界面需要两个接口的数据，我们就可以使用了
+     */
+    private void doSubscribeZip() {
+        Observable observable1 = Observable.create(new ObservableOnSubscribe<String>() {
+            @Override
+            public void subscribe(ObservableEmitter<String> emitter) throws Exception {
+                emitter.onNext("A");
+                Log.e(TAG, "A");
+                emitter.onNext("B");
+                Log.e(TAG, "B");
+                emitter.onNext("C");
+                Log.e(TAG, "C");
+                emitter.onNext("D");
+                Log.e(TAG, "D");
+            }
+        }).subscribeOn(Schedulers.io());
+
+        Observable observable2 = Observable.create(new ObservableOnSubscribe<Integer>() {
+            @Override
+            public void subscribe(ObservableEmitter<Integer> emitter) throws Exception {
+                emitter.onNext(1);
+                Log.e(TAG, "1");
+
+                emitter.onNext(2);
+                Log.e(TAG, "2");
+
+                emitter.onNext(3);
+                Log.e(TAG, "3");
+
+                emitter.onNext(4);
+                Log.e(TAG, "4");
+
+                emitter.onNext(5);
+                Log.e(TAG, "5");
+
+
+            }
+        }).subscribeOn(Schedulers.io());
+
+        Observable.zip(observable1, observable2, new BiFunction<String, Integer, String>() {
+
+            @Override
+            public String apply(String s, Integer integer) throws Exception {
+                return s + integer;
+            }
+        }).subscribe(new Consumer<String>() {
+            @Override
+            public void accept(String s) throws Exception {
+                Log.e(TAG, "s=" + s);
+            }
+        });
     }
 
     /**
