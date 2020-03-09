@@ -3,6 +3,8 @@ package com.example.template.app;
 import android.app.Application;
 import android.content.Context;
 
+import com.example.template.mvp.util.ActivityUtil;
+import com.example.template.mvp.util.YUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshFooterCreator;
 import com.scwang.smartrefresh.layout.api.DefaultRefreshHeaderCreator;
@@ -45,6 +47,9 @@ public class BaseApplication extends Application {
     public void onCreate() {
         super.onCreate();
         mContext = getApplicationContext();
+        YUtils.initialize(this);
+        //注册Activity生命周期
+        registerActivityLifecycleCallbacks(ActivityUtil.getActivityLifecycleCallbacks());
     }
 
     public static Context getContext() {

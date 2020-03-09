@@ -1,7 +1,12 @@
 package com.example.template.mvp.base;
 
+import com.example.template.mvp.http.API;
+import com.example.template.mvp.http.RetrofitService;
+
+import io.reactivex.Observable;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.CompositeDisposable;
-import io.reactivex.disposables.Disposable;
+import io.reactivex.schedulers.Schedulers;
 
 /**
  * 功能描述：Presenter的基类，
@@ -11,51 +16,45 @@ import io.reactivex.disposables.Disposable;
  * Created by gfq on 2020/3/9.
  */
 public abstract class BasePresenter<V extends BaseView> {
-    //将所有正在处理的Subscription都添加到CompositeSubscription中。统一退出的时候注销观察
-    private CompositeDisposable mCompositeDisposable;
-    private V baseView;
+    private CompositeDisposable compositeDisposable;
+    public V baseView;
 
     /**
-     * 和View绑定
-     *
-     * @param baseView
+     * 这个后面可以直接用   Example：apiServer.login(username, password)；
      */
-    public void attachView(V baseView) {
+    protected API.WAZApi apiServer = RetrofitService.getInstance().getApiService();
+
+    public BasePresenter(V baseView) {
         this.baseView = baseView;
     }
 
     /**
-     * 解绑View,该方法在BaseMvpActivity类中被调用
+     * 解除绑定
      */
     public void detachView() {
         baseView = null;
-        // 在界面退出等需要解绑观察者的情况下调用此方法统一解绑，防止Rx造成的内存泄漏
-        if (mCompositeDisposable != null) {
-            mCompositeDisposable.dispose();
-        }
+        removeDisposable();
     }
 
     /**
-     * 获取View
-     *
-     * @return view
+     * 返回 view
      */
-    public V getMvpView() {
+    public V getBaseView() {
         return baseView;
     }
 
-
-    /**
-     * 将Disposable添加,在每次网络访问之前初始化时进行添加操作
-     *
-     * @param subscription subscription
-     */
-    public void addDisposable(Disposable subscription) {
-        //csb 如果解绑了的话添加 sb 需要新的实例否则绑定时无效的
-        if (mCompositeDisposable == null || mCompositeDisposable.isDisposed()) {
-            mCompositeDisposable = new CompositeDisposable();
+    public void addDisposable(Observable<?> observable, BaseObserver observer) {
+        if (compositeDisposable == null) {
+            compositeDisposable = new CompositeDisposable();
         }
-        mCompositeDisposable.add(subscription);
+        compositeDisposable.add(observable.subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeWith(observer));
     }
 
+    private void removeDisposable() {
+        if (compositeDisposable != null) {
+            compositeDisposable.dispose();
+        }
+    }
 }

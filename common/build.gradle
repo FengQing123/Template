@@ -65,6 +65,7 @@ dependencies {
     api rootProject.ext.dependencies["rxandroid"]
     api rootProject.ext.dependencies["adapter-rxjava"]
     api rootProject.ext.dependencies["rxbinding"]
+    api rootProject.ext.dependencies["logging-interceptor"]
 
     api rootProject.ext.dependencies["retrofit"]
     api rootProject.ext.dependencies["converter-gson"]

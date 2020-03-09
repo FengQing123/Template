@@ -6,10 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
+import com.example.template.mvp.util.ActivityUtil;
+import com.example.template.mvp.util.YUtils;
 
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
@@ -18,174 +19,70 @@ import butterknife.Unbinder;
  * 功能描述： Fragment的基类
  * Created by gfq on 2020/3/9.
  */
-public abstract class BaseFragment<T extends BasePresenter> extends Fragment implements BaseView {
-
-    protected T mPresenter;
+public abstract class BaseFragment<P extends BasePresenter> extends Fragment implements BaseView {
+    private Unbinder unbinder;
     protected Context mContext;
-    protected Bundle mBundle;
-    protected Unbinder unbinder;
-    protected View view;
 
-    /**
-     * 恢复数据
-     *
-     * @param outState bundle
-     */
-    @Override
-    public void onSaveInstanceState(@NonNull Bundle outState) {
-        super.onSaveInstanceState(outState);
-        if (mBundle != null) {
-            outState.putBundle("bundle", mBundle);
-        }
-    }
+    protected P presenter;
 
-    /**
-     * 绑定activity
-     *
-     * @param context context
-     */
-    @Override
-    public void onAttach(@NonNull Context context) {
-        super.onAttach(context);
-        mContext = context;
-    }
+    protected abstract P createPresenter();
 
-    /**
-     * 运行在onAttach之后，可以接收别人传递过来的参数，实例化对象
-     * 可以解决返回的时候页面空白的bug
-     *
-     * @param savedInstanceState
-     */
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        if (savedInstanceState != null) {
-            mBundle = savedInstanceState.getBundle("bundle");
-        } else {
-            mBundle = getArguments() == null ? new Bundle() : getArguments();
-        }
-        //初始化presenter
-        mPresenter = initPresenter();
-    }
+    protected abstract int getLayoutId();
 
-    protected T getPresenter() {
-        return mPresenter;
-    }
+    protected abstract void initView();
 
+    protected abstract void initData();
 
-    /**
-     * 运行在onCreate之后，生成View视图
-     *
-     * @param inflater
-     * @param container
-     * @param savedInstanceState
-     * @return
-     */
     @Nullable
     @Override
-    public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        view = initView(inflater, container, savedInstanceState);
+    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        View view = inflater.inflate(getLayoutId(), container, false);
         unbinder = ButterKnife.bind(this, view);
+        //得到context,在后面的子类Fragment中都可以直接调用
+        mContext = ActivityUtil.getCurrentActivity();
+        presenter = createPresenter();
+        initView();
+        initData();
         return view;
     }
 
-    /**
-     * 运行在onCreateView之后
-     * 加载数据
-     *
-     * @param savedInstanceState
-     */
     @Override
-    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
-        super.onActivityCreated(savedInstanceState);
-        mPresenter.attachView(this);
-
-    }
-
-
-    /**
-     * 跳转Fragment
-     *
-     * @param toFragment 跳转去的fragment
-     */
-    public void startFragment(Fragment toFragment) {
-        startFragment(toFragment, null);
-    }
-
-    /**
-     * 跳转Fragment
-     *
-     * @param toFragment 跳转到的fragment
-     * @param tag        fragment的标签
-     */
-    public void startFragment(Fragment toFragment, String tag) {
-        FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
-        fragmentTransaction.hide(this).add(android.R.id.content, toFragment, tag);
-        fragmentTransaction.addToBackStack(tag);
-        fragmentTransaction.commitAllowingStateLoss();
+    public void onResume() {
+        super.onResume();
+        initListener();
     }
 
     @Override
     public void onDestroyView() {
         super.onDestroyView();
+        //do something
         unbinder.unbind();
+        //销毁时，解除绑定
+        if (presenter != null) {
+            presenter.detachView();
+        }
     }
 
-    /**
-     * fragment进行回退
-     * 类似于activity的OnBackPress
-     */
-    public void onBack() {
-        getFragmentManager().popBackStack();
+    private void initListener() {
     }
 
     @Override
-    public void onDetach() {
-        mPresenter.detachView();
-        super.onDetach();
+    public void onErrorCode(BaseBean bean) {
     }
 
     /**
-     * 初始化Fragment应有的视图
-     *
-     * @return view
-     */
-    public abstract View initView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState);
-
-
-    /**
-     * 创建presenter
-     *
-     * @return <T extends BasePresenter> 必须是BasePresenter的子类
-     */
-    public abstract T initPresenter();
-
-    /**
-     * 得到context
-     *
-     * @return context
+     * 显示加载中
      */
     @Override
-    public Context getContext() {
-        return mContext;
+    public void showLoading() {
+        YUtils.showLoading(ActivityUtil.getCurrentActivity(), "加载中");
     }
 
     /**
-     * 得到bundle
-     *
-     * @return bundle
+     * 隐藏加载中
      */
-    public Bundle getBundle() {
-        return mBundle;
+    @Override
+    public void hideLoading() {
+        YUtils.hideLoading();
     }
-
-    /**
-     * 得到fragment
-     *
-     * @return fragment
-     */
-    public Fragment getFragment() {
-        return this;
-    }
-
 }

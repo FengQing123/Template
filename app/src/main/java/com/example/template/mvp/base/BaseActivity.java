@@ -1,10 +1,14 @@
 package com.example.template.mvp.base;
 
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+
+import com.example.template.mvp.util.YUtils;
 
 import butterknife.ButterKnife;
 
@@ -12,47 +16,75 @@ import butterknife.ButterKnife;
  * 功能描述： Activity的基类
  * Created by gfq on 2020/3/9.
  */
-public abstract class BaseActivity extends AppCompatActivity {
+public abstract class BaseActivity<P extends BasePresenter> extends AppCompatActivity implements BaseView {
+    protected P presenter;
+
+    protected abstract P createPresenter();
+
+    protected abstract int getLayoutId();
+
+    protected abstract void initView();
+
+    protected abstract void initData();
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(getLayoutId());
-        initPresenter();
-        initViews();
+        //设置竖屏
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+        setContentView(LayoutInflater.from(this).inflate(getLayoutId(), null));
         ButterKnife.bind(this);
+        presenter = createPresenter();
+        initView();
+        initData();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        initListener();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        //销毁时，解除绑定
+        if (presenter != null) {
+            presenter.detachView();
+        }
+    }
+
+    protected void initListener() {
+    }
+
+    @Override
+    public void showLoading() {
+        YUtils.showLoading(this, "加载中");
+    }
+
+    @Override
+    public void hideLoading() {
+        YUtils.hideLoading();
     }
 
     /**
-     * 抽象方法：实例化Presenter
+     * 可以处理异常
      */
-    protected abstract void initPresenter();
+    @Override
+    public void onErrorCode(BaseBean bean) {
+    }
 
     /**
-     * 抽象方法：初始化控件，一般在BaseActivity中通过ButterKnife来绑定，所以该方法内部一般我们初始化界面相关的操作
+     * 启动activity
      *
-     * @return 控件
+     * @param activity 当前活动
+     * @param isFinish 是否结束当前活动
      */
-    protected abstract void initViews();
-
-
-    /**
-     * 抽象方法：得到布局id
-     *
-     * @return 布局id
-     */
-    protected abstract int getLayoutId();
-
-
-    /**
-     * 启动Fragment
-     *
-     * @param id       id
-     * @param fragment 碎片
-     */
-    protected void startFragment(int id, Fragment fragment) {
-        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.add(id, fragment);
-        fragmentTransaction.commit();
+    public void startActivity(Class<?> activity, boolean isFinish) {
+        Intent intent = new Intent(this, activity);
+        startActivity(intent);
+        if (isFinish) {
+            finish();
+        }
     }
 }

@@ -22,11 +22,12 @@
         <activity android:name=".module.recycleview.RecycleViewTestActivity" />
         <activity android:name=".module.recycleview.RvToViewPagerActivity" />
         <activity android:name=".module.notification.NotificationActivity" />
-        <activity android:name=".module.DefineTextViewActivity"/>
-        <activity android:name=".module.CalendarActivity"/>
-        <activity android:name=".module.RxJavaActivity"/>
+        <activity android:name=".module.DefineTextViewActivity" />
+        <activity android:name=".module.CalendarActivity" />
+        <activity android:name=".module.RxJavaActivity" />
 
-        <activity android:name=".mvp.view.PoetryActivity"/>
+        <!--        <activity android:name=".mvp.view.PoetryActivity"/>-->
+        <activity android:name=".mvp.model.login.LoginActivity" />
 
 
         <!--消息通知监听服务-->

@@ -1,13 +1,11 @@
 package com.example.template;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Toast;
+
+import androidx.annotation.NonNull;
 
 import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
@@ -17,7 +15,7 @@ import com.example.template.module.RxJavaActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
-import com.example.template.mvp.view.PoetryActivity;
+import com.example.template.mvp.model.login.LoginActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -64,7 +62,7 @@ public class MainActivity extends BaseActivity {
                 UIUtil.showActivity(mActivity, RxJavaActivity.class);
                 break;
             case R.id.seven:
-                UIUtil.showActivity(mActivity, PoetryActivity.class);
+                UIUtil.showActivity(mActivity, LoginActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);
