@@ -25,7 +25,7 @@
         android:title="RxJava学习" />
     <item
         android:id="@+id/seven"
-        android:title="seven" />
+        android:title="MVP架构" />
 
     <item
         android:id="@+id/eight"

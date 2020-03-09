@@ -17,6 +17,7 @@ import com.example.template.module.RxJavaActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
+import com.example.template.mvp.view.PoetryActivity;
 
 public class MainActivity extends BaseActivity {
 
@@ -61,6 +62,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.six:
                 UIUtil.showActivity(mActivity, RxJavaActivity.class);
+                break;
+            case R.id.seven:
+                UIUtil.showActivity(mActivity, PoetryActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);

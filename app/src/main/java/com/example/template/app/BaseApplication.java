@@ -18,6 +18,9 @@ import com.scwang.smartrefresh.layout.header.ClassicsHeader;
  */
 public class BaseApplication extends Application {
 
+    private static Context mContext;
+
+
     //static 代码段可以防止内存泄露
     static {
         //设置全局的Header构建器
@@ -41,5 +44,10 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
+        mContext = getApplicationContext();
+    }
+
+    public static Context getContext() {
+        return mContext;
     }
 }
