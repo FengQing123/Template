@@ -28,6 +28,7 @@
 
         <!--        <activity android:name=".mvp.view.PoetryActivity"/>-->
         <activity android:name=".mvp.model.login.LoginActivity" />
+        <activity android:name=".module.DefineFlowLayoutActivity"/>
 
 
         <!--消息通知监听服务-->

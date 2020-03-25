@@ -29,5 +29,5 @@
 
     <item
         android:id="@+id/eight"
-        android:title="eight" />
+        android:title="自定义FlowLayout" />
 </menu>

@@ -10,6 +10,7 @@ import androidx.annotation.NonNull;
 import com.example.common.util.UIUtil;
 import com.example.template.app.BaseActivity;
 import com.example.template.module.CalendarActivity;
+import com.example.template.module.DefineFlowLayoutActivity;
 import com.example.template.module.DefineTextViewActivity;
 import com.example.template.module.RxJavaActivity;
 import com.example.template.module.notification.NotificationActivity;
@@ -63,6 +64,9 @@ public class MainActivity extends BaseActivity {
                 break;
             case R.id.seven:
                 UIUtil.showActivity(mActivity, LoginActivity.class);
+                break;
+            case R.id.eight:
+                UIUtil.showActivity(mActivity, DefineFlowLayoutActivity.class);
                 break;
         }
         return super.onOptionsItemSelected(item);
