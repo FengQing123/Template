@@ -1,26 +1,50 @@
 package com.example.template;
 
-import android.content.Context;
 import android.os.Bundle;
+import android.util.SparseArray;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
+import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.common.util.UIUtil;
+import com.example.template.adapter.MenuAdapter;
 import com.example.template.app.BaseActivity;
+import com.example.template.bean.HomeMenuBean;
 import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineFlowLayoutActivity;
 import com.example.template.module.DefineTextViewActivity;
 import com.example.template.module.RxJavaActivity;
+import com.example.template.module.ViewPagerActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
 import com.example.template.mvp.model.login.LoginActivity;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 public class MainActivity extends BaseActivity {
 
-    private Context mContext;
+    private List<HomeMenuBean> mList = new ArrayList<>();
+
+    {
+        mList.add(new HomeMenuBean("ViewPager的使用", ViewPagerActivity.class));
+        mList.add(new HomeMenuBean("RecycleView", RecycleViewTestActivity.class));
+        mList.add(new HomeMenuBean("RecycleView实现轮播图", RvToViewPagerActivity.class));
+        mList.add(new HomeMenuBean("监听通知消息", NotificationActivity.class));
+        mList.add(new HomeMenuBean("自定义TextView", DefineTextViewActivity.class));
+        mList.add(new HomeMenuBean("日期学习", CalendarActivity.class));
+        mList.add(new HomeMenuBean("RxJava学习", RxJavaActivity.class));
+        mList.add(new HomeMenuBean("MVP架构", LoginActivity.class));
+        mList.add(new HomeMenuBean("自定义FlowLayout", DefineFlowLayoutActivity.class));
+    }
 
     @Override
     protected int getLayout() {
@@ -30,45 +54,15 @@ public class MainActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mContext = this;
+
+        RecyclerView mRecycleView = findViewById(R.id.recycleview);
+        mRecycleView.setLayoutManager(new LinearLayoutManager(mActivity));
+        MenuAdapter mAdapter = new MenuAdapter(mList);
+        mRecycleView.setAdapter(mAdapter);
+        mAdapter.setOnItemClickListener((adapter, view, position) -> {
+            HomeMenuBean bean = mList.get(position);
+            UIUtil.showActivity(mActivity, bean.getClz());
+        });
     }
 
-    //创建菜单
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    //菜单选项
-    @Override
-    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.one:
-                UIUtil.showActivity(mActivity, RecycleViewTestActivity.class);
-                break;
-            case R.id.two:
-                UIUtil.showActivity(mActivity, RvToViewPagerActivity.class);
-                break;
-            case R.id.three:
-                UIUtil.showActivity(mActivity, NotificationActivity.class);
-                break;
-            case R.id.four:
-                UIUtil.showActivity(mActivity, DefineTextViewActivity.class);
-                break;
-            case R.id.five:
-                UIUtil.showActivity(mActivity, CalendarActivity.class);
-                break;
-            case R.id.six:
-                UIUtil.showActivity(mActivity, RxJavaActivity.class);
-                break;
-            case R.id.seven:
-                UIUtil.showActivity(mActivity, LoginActivity.class);
-                break;
-            case R.id.eight:
-                UIUtil.showActivity(mActivity, DefineFlowLayoutActivity.class);
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 }
