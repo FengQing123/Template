@@ -1,23 +1,19 @@
 package com.example.template;
 
 import android.os.Bundle;
-import android.util.SparseArray;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
 
-import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.chad.library.adapter.base.BaseQuickAdapter;
 import com.example.common.util.UIUtil;
 import com.example.template.adapter.MenuAdapter;
 import com.example.template.app.BaseActivity;
 import com.example.template.bean.HomeMenuBean;
+import com.example.template.jetpack.livedata.LiveDataTestActivity;
 import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineFlowLayoutActivity;
 import com.example.template.module.DefineTextViewActivity;
+import com.example.template.jetpack.lifecycle.LifeCycleTestActivity;
 import com.example.template.module.RxJavaActivity;
 import com.example.template.module.ViewPagerActivity;
 import com.example.template.module.notification.NotificationActivity;
@@ -26,9 +22,7 @@ import com.example.template.module.recycleview.RvToViewPagerActivity;
 import com.example.template.mvp.model.login.LoginActivity;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public class MainActivity extends BaseActivity {
 
@@ -44,6 +38,8 @@ public class MainActivity extends BaseActivity {
         mList.add(new HomeMenuBean("RxJava学习", RxJavaActivity.class));
         mList.add(new HomeMenuBean("MVP架构", LoginActivity.class));
         mList.add(new HomeMenuBean("自定义FlowLayout", DefineFlowLayoutActivity.class));
+        mList.add(new HomeMenuBean("JetPack架构组件-lifecycle", LifeCycleTestActivity.class));
+        mList.add(new HomeMenuBean("JetPack架构组件-LifeData", LiveDataTestActivity.class));
     }
 
     @Override

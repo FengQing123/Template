@@ -31,6 +31,9 @@
         <activity android:name=".mvp.model.login.LoginActivity" />
         <activity android:name=".module.DefineFlowLayoutActivity" />
         <activity android:name=".module.ViewPagerActivity" />
+        <activity android:name=".jetpack.lifecycle.LifeCycleTestActivity" />
+        <activity android:name=".jetpack.livedata.LiveDataTestActivity" />
+        <activity android:name=".jetpack.livedata.LiveDataBusTestActivity"/>
 
 
         <!--消息通知监听服务-->
