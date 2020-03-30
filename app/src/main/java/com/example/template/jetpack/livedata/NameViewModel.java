@@ -11,11 +11,12 @@ public class NameViewModel extends ViewModel {
 
     private MutableLiveData<String> currentName;
 
+    public int i;
+
     public MutableLiveData<String> getCurrentName() {
         if (currentName == null) {
             currentName = new MutableLiveData<String>();
         }
         return currentName;
     }
-
 }

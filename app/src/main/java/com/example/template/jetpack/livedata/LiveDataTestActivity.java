@@ -54,7 +54,7 @@ public class LiveDataTestActivity extends BaseActivity {
                  *
                  * 注意：主线程用setValue,工作线程用postValue()
                  */
-                model.getCurrentName().setValue("Android=");
+                model.getCurrentName().setValue("Android=" + (model.i++));
             }
         });
 
