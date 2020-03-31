@@ -33,7 +33,8 @@
         <activity android:name=".module.ViewPagerActivity" />
         <activity android:name=".jetpack.lifecycle.LifeCycleTestActivity" />
         <activity android:name=".jetpack.livedata.LiveDataTestActivity" />
-        <activity android:name=".jetpack.livedata.LiveDataBusTestActivity"/>
+        <activity android:name=".jetpack.livedata.LiveDataBusTestActivity" />
+        <activity android:name=".jetpack.databinding.DataBindingTestActivity" />
 
 
         <!--消息通知监听服务-->

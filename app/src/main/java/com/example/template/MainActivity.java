@@ -9,6 +9,7 @@ import com.example.common.util.UIUtil;
 import com.example.template.adapter.MenuAdapter;
 import com.example.template.app.BaseActivity;
 import com.example.template.bean.HomeMenuBean;
+import com.example.template.jetpack.databinding.DataBindingTestActivity;
 import com.example.template.jetpack.livedata.LiveDataTestActivity;
 import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineFlowLayoutActivity;
@@ -40,6 +41,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new HomeMenuBean("自定义FlowLayout", DefineFlowLayoutActivity.class));
         mList.add(new HomeMenuBean("JetPack架构组件-lifecycle", LifeCycleTestActivity.class));
         mList.add(new HomeMenuBean("JetPack架构组件-LifeData", LiveDataTestActivity.class));
+        mList.add(new HomeMenuBean("JetPack架构组件-数据绑定", DataBindingTestActivity.class));
     }
 
     @Override
