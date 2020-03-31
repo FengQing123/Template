@@ -68,20 +68,20 @@ public class LiveDataTestActivity extends BaseActivity {
                 //主线程设置LiveData数据使用setValue();
                 LiveDataBus.getInstance().with("data", String.class).setValue("Android");
 
-//                new Thread() {
-//                    @Override
-//                    public void run() {
-//                        while (true) {
-//                            //工作线程设置LiveData数据使用postValue()
-//                            LiveDataBus.getInstance().with("data", String.class).postValue("Android");
-//                            try {
-//                                Thread.sleep(5000);
-//                            } catch (InterruptedException e) {
-//                                e.printStackTrace();
-//                            }
-//                        }
-//                    }
-//                }.start();
+                new Thread() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            //工作线程设置LiveData数据使用postValue()
+                            LiveDataBus.getInstance().with("data", String.class).postValue("Android");
+                            try {
+                                Thread.sleep(5000);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }.start();
             }
         });
 
