@@ -2,8 +2,13 @@ package com.example.template.jetpack.room;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 
 import androidx.annotation.Nullable;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.template.R;
 import com.example.template.app.BaseActivity;
@@ -13,7 +18,11 @@ import com.example.template.jetpack.room.database.AppDataBase;
 import com.example.template.jetpack.room.entity.Address;
 import com.example.template.jetpack.room.entity.Student;
 import com.example.template.jetpack.room.entity.StudentTuple;
+import com.example.template.jetpack.room.viewmode_room.Course;
+import com.example.template.jetpack.room.viewmode_room.CourseAdapter;
+import com.example.template.jetpack.room.viewmode_room.CourseViewModel;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -22,8 +31,13 @@ import java.util.List;
  */
 public class RoomTestActivity extends BaseActivity {
 
-
     private static final String TAG = "RoomTestActivity";
+
+    private CourseViewModel mCourseViewModel;
+
+    private RecyclerView mRecycleView;
+
+    private CourseAdapter courseAdapter;
 
     @Override
     protected int getLayout() {
@@ -34,6 +48,70 @@ public class RoomTestActivity extends BaseActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        mRecycleView = findViewById(R.id.recycleview);
+        mRecycleView.setLayoutManager(new LinearLayoutManager(mActivity));
+        courseAdapter = new CourseAdapter(new ArrayList<>());
+        mRecycleView.setAdapter(courseAdapter);
+
+        mCourseViewModel = ViewModelProviders.of(mActivity).get(CourseViewModel.class);
+        mCourseViewModel.getAllCourse().observe(mActivity, new Observer<List<Course>>() {
+            @Override
+            public void onChanged(List<Course> courses) {
+                courseAdapter.setNewData(courses);
+            }
+        });
+
+        findViewById(R.id.btn_insert).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        for (int i = 0; i < 50; i++) {
+                            mCourseViewModel.insert(new Course("Andorid" + i, "10" + i));
+                        }
+                    }
+                }).start();
+
+            }
+        });
+
+        findViewById(R.id.btn_get).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mCourseViewModel.getAllCourse().observe(mActivity, new Observer<List<Course>>() {
+                    @Override
+                    public void onChanged(List<Course> courses) {
+                        courseAdapter.setNewData(courses);
+                    }
+                });
+            }
+        });
+
+        findViewById(R.id.btn_update).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        while (true) {
+                            try {
+                                Thread.sleep(2000);
+                                int flag = ++mCourseViewModel.i;
+                                mCourseViewModel.update(new Course(5, "Java", "1" + flag));
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+                }).start();
+            }
+        });
+
+    }
+
+
+    private void useViewModelUpdateUI() {
 
 
     }
