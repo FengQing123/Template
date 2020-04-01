@@ -11,6 +11,7 @@ import com.example.template.app.BaseActivity;
 import com.example.template.bean.HomeMenuBean;
 import com.example.template.jetpack.databinding.DataBindingTestActivity;
 import com.example.template.jetpack.livedata.LiveDataTestActivity;
+import com.example.template.jetpack.room.RoomTestActivity;
 import com.example.template.module.CalendarActivity;
 import com.example.template.module.DefineFlowLayoutActivity;
 import com.example.template.module.DefineTextViewActivity;
@@ -42,6 +43,7 @@ public class MainActivity extends BaseActivity {
         mList.add(new HomeMenuBean("JetPack架构组件-lifecycle", LifeCycleTestActivity.class));
         mList.add(new HomeMenuBean("JetPack架构组件-LifeData", LiveDataTestActivity.class));
         mList.add(new HomeMenuBean("JetPack架构组件-数据绑定", DataBindingTestActivity.class));
+        mList.add(new HomeMenuBean("JetPack架构组件-数据库Room", RoomTestActivity.class));
     }
 
     @Override

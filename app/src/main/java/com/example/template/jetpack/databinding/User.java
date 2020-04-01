@@ -3,8 +3,6 @@ package com.example.template.jetpack.databinding;
 import androidx.databinding.BaseObservable;
 import androidx.databinding.Bindable;
 
-import com.example.template.BR;
-
 /**
  * 功能描述：
  * Created by gfq on 2020/3/31.
@@ -26,7 +24,7 @@ public class User extends BaseObservable {
 
     public void setName(String name) {
         this.name = name;
-        notifyPropertyChanged(BR.name);
+//        notifyPropertyChanged(BR.name);
     }
 
     public int getAge() {
