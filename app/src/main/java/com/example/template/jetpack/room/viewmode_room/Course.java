@@ -21,7 +21,6 @@ public class Course {
     private String score;
 
     public Course() {
-
     }
 
     public Course(String name, String score) {
