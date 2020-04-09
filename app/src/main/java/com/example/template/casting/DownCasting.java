@@ -23,11 +23,18 @@ public class DownCasting {
         a1.eat();
         a2.eat();
         b1.eat();
+
+        Apple apple = new Apple();
+        Fruit fruit = apple;//向上转型
+        apple.eat();//输出：eat:Apple
+        System.out.println(apple.name);//输出：Apple
+        fruit.eat();//输出：eat:Apple
+        System.out.println(fruit.name);//输出：Fruit
     }
 }
 
 class Fruit {
-    private String name = "Fruit";
+    public String name = "Fruit";
 
     public void eat() {
         System.out.println("eat:" + name);
@@ -35,7 +42,7 @@ class Fruit {
 }
 
 class Apple extends Fruit {
-    private String name = "Apple";
+    public String name = "Apple";
 
     public void eat() {
         System.out.println("eat:" + name);
