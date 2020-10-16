@@ -21,6 +21,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".module.recycleview.RecycleViewTestActivity" />
+        <activity android:name=".module.recycleview.RecycleViewTopActivity"/>
         <activity android:name=".module.recycleview.RvToViewPagerActivity" />
         <activity android:name=".module.notification.NotificationActivity" />
         <activity android:name=".module.DefineTextViewActivity" />

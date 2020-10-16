@@ -20,6 +20,7 @@ import com.example.template.module.RxJavaActivity;
 import com.example.template.module.ViewPagerActivity;
 import com.example.template.module.notification.NotificationActivity;
 import com.example.template.module.recycleview.RecycleViewTestActivity;
+import com.example.template.module.recycleview.RecycleViewTopActivity;
 import com.example.template.module.recycleview.RvToViewPagerActivity;
 import com.example.template.mvp.model.login.LoginActivity;
 
@@ -33,6 +34,7 @@ public class MainActivity extends BaseActivity {
     {
         mList.add(new HomeMenuBean("ViewPager的使用", ViewPagerActivity.class));
         mList.add(new HomeMenuBean("RecycleView", RecycleViewTestActivity.class));
+        mList.add(new HomeMenuBean("RecycleView实现吸顶效果", RecycleViewTopActivity.class));
         mList.add(new HomeMenuBean("RecycleView实现轮播图", RvToViewPagerActivity.class));
         mList.add(new HomeMenuBean("监听通知消息", NotificationActivity.class));
         mList.add(new HomeMenuBean("自定义TextView", DefineTextViewActivity.class));
