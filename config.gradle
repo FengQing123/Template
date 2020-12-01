@@ -51,7 +51,7 @@ ext {
             "rxjava"                       : "io.reactivex.rxjava2:rxjava:2.2.4",
             "rxandroid"                    : "io.reactivex.rxjava2:rxandroid:2.1.0",
             "adapter-rxjava"               : "com.squareup.retrofit2:adapter-rxjava2:2.4.0",
-            "logging-interceptor"               : "com.squareup.okhttp3:logging-interceptor:3.4.1",
+            "logging-interceptor"          : "com.squareup.okhttp3:logging-interceptor:3.4.1",
 
             "rxbinding"                    : "com.jakewharton.rxbinding2:rxbinding:2.1.0",
 
@@ -66,6 +66,9 @@ ext {
             "orient"                       : "com.orient:Orient-Ui:1.0.2",
 
             "multidex"                     : 'androidx.multidex:multidex:2.0.1',
+
+            //手势操作ImageView
+            "photo-view"                   : "com.github.chrisbanes:PhotoView:2.0.0",
 
     ]
 
