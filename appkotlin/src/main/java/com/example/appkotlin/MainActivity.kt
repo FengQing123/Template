@@ -2,6 +2,7 @@ package com.example.appkotlin
 
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.appkotlin.activity.PhotoPickActivity
 import com.example.appkotlin.activity.PhotoViewActivity
 import com.example.appkotlin.adapter.MenuAdapter
 import com.example.appkotlin.base.BaseActivity
@@ -17,6 +18,7 @@ class MainActivity : BaseActivity() {
 
     init {
         mList.add(HomeMenuBean("PhotoView的使用", PhotoViewActivity::class.java))
+        mList.add(HomeMenuBean("知乎图片选择器的使用", PhotoPickActivity::class.java))
     }
 
     override fun getLayoutId(): Int {

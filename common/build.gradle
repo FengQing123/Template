@@ -81,9 +81,14 @@ dependencies {
     //日历
     api rootProject.ext.dependencies["ncalendar"]
 
+    //multidex分包
     api rootProject.ext.dependencies["multidex"]
 
+    //手势操作ImageView
     api rootProject.ext.dependencies["photo-view"]
+
+    //知乎的图片选择器
+    api rootProject.ext.dependencies["matisse"]
 
 
     //表格（RecycleView实现）

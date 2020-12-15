@@ -70,6 +70,9 @@ ext {
             //手势操作ImageView
             "photo-view"                   : "com.github.chrisbanes:PhotoView:2.0.0",
 
+            //知乎的图片选择器
+            "matisse"                      : "com.zhihu.android:matisse:0.5.3-beta3"
+
     ]
 
 
